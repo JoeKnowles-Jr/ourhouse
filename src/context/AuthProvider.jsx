@@ -5,6 +5,12 @@ const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
+const loginWithGoogle = () => {
+  supabase.auth.signInWithOAuth({
+    provider: 'google',
+  })
+}
+
 const login = (email, password) =>
   supabase.auth.signInWithPassword({ email, password });
 
@@ -57,7 +63,8 @@ const AuthProvider = ({ children }) => {
         login,
         signOut,
         passwordReset,
-        updatePassword
+        updatePassword,
+        loginWithGoogle
       }}>
       {!loading && children}
     </AuthContext.Provider>

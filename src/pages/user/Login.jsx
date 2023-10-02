@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -9,7 +9,7 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login, user } = useAuth();
+  const { login, user, loginWithGoogle } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,9 +54,12 @@ const Login = () => {
                 {errorMsg}
               </Alert>
             )}
-            <div className="text-center mt-2">
+            <div className="d-flex flex-column text-center mt-2">
               <Button disabled={loading} type="submit" className="w-50">
                 Login
+              </Button>
+              <Button disabled={loading} onClick={loginWithGoogle} className="w-50">
+                Login with Google
               </Button>
             </div>
           </Form>

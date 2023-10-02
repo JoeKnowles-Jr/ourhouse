@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div style={{ fontSize: "24px" }}>
-      You are logged in and your email address is {user.email}
+      You are logged in and this is Home {user.email}
     </div>
   );
 };

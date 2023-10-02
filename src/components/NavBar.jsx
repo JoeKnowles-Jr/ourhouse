@@ -21,7 +21,7 @@ const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>UserAuth</Navbar.Brand>
+        <Navbar.Brand>OurHouse 1.1</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -36,16 +36,32 @@ const NavBar = () => {
               </Nav.Link>
             )}
             {auth && (
-              <Nav.Link as={Link} to="/">
-                Home
-              </Nav.Link>
+              <div className="d-flex align-items-center justify-content-center">
+                <Nav.Link as={Link} to="/">
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/todos">
+                  Todos
+                </Nav.Link>
+                <Nav.Link as={Link} to="/lists">
+                  Lists
+                </Nav.Link>
+                <Nav.Link as={Link} to="/calendar">
+                  Calendar
+                </Nav.Link>
+              </div>
             )}
           </Nav>
           <Nav>
             {auth && (
+              <div className="d-flex align-items-center justify-content-center">
+              <Nav.Link as={Link} to="/profile">
+                Profile
+              </Nav.Link>
               <Nav.Link as={Button} onClick={handleLogout}>
                 LogOut
               </Nav.Link>
+              </div>
             )}
           </Nav>
         </Navbar.Collapse>
