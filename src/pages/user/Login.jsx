@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider";
+import logo from "../../images/g-logo.png"
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -33,11 +34,18 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Card>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Card style={{
+        width: "40%",
+        marginTop: "5rem",
+        borderRadius: "5rem"
+      }}>
         <Card.Body>
           <h2 className="text-center mb-4">Login</h2>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{
+            width: "50%",
+            margin: "0 auto"
+          }}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
@@ -54,24 +62,28 @@ const Login = () => {
                 {errorMsg}
               </Alert>
             )}
+            <div className="w-100 text-center mt-2">
+              Forgot Password? <Link to={"/passwordreset"}>Click Here</Link>
+            </div>
             <div className="d-flex flex-column text-center mt-2">
-              <Button disabled={loading} type="submit" className="w-50">
+              <Button disabled={loading} type="submit" className="w-75" style={{ margin: "1rem auto" }}>
                 Login
               </Button>
-              <Button disabled={loading} onClick={loginWithGoogle} className="w-50">
+              <Button disabled={loading} type="button" onClick={loginWithGoogle} className="w-75 btn-secondary" style={{ margin: "2rem auto" }}>
+                <img style={{
+                  marginRight: "1rem"
+                }} width="32" src={logo} />
                 Login with Google
               </Button>
             </div>
           </Form>
         </Card.Body>
-        <div className="w-100 text-center mt-2">
-          New User? <Link to={"/register"}>Register</Link>
+        <div className="w-100 text-center mb-5">
+          New User? <Link to={"/register"}>Register here</Link>
         </div>
-        <div className="w-100 text-center mt-2">
-          Forgot Password? <Link to={"/passwordreset"}>Click Here</Link>
-        </div>
+
       </Card>
-    </>
+    </div>
   );
 };
 
