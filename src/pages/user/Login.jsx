@@ -36,8 +36,8 @@ const Login = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card style={{
-        width: "40%",
-        marginTop: "5rem",
+        width: "50%",
+        marginTop: "1rem",
         borderRadius: "5rem"
       }}>
         <Card.Body>
@@ -69,10 +69,10 @@ const Login = () => {
               <Button disabled={loading} type="submit" className="w-75" style={{ margin: "1rem auto" }}>
                 Login
               </Button>
-              <Button disabled={loading} type="button" onClick={loginWithGoogle} className="w-75 btn-secondary" style={{ margin: "2rem auto" }}>
+              <Button disabled={loading} type="button" onClick={loginWithGoogle} className="w-100 btn-secondary" style={{ margin: "2rem auto" }}>
                 <img style={{
                   marginRight: "1rem"
-                }} width="32" src={logo} />
+                }} width="24" src={logo} />
                 Login with Google
               </Button>
             </div>

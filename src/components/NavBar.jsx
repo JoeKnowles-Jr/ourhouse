@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
 const NavBar = () => {
-  const { auth, signOut } = useAuth();
+  const { auth, user, signOut } = useAuth();
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -24,6 +24,7 @@ const NavBar = () => {
         <Navbar.Brand>OurHouse 1.1</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav></Nav>
           <Nav className="me-auto">
             {!auth && (
               <Nav.Link as={Link} to="/login">
@@ -54,13 +55,13 @@ const NavBar = () => {
           </Nav>
           <Nav>
             {auth && (
-              <div className="d-flex align-items-center justify-content-center">
-              <Nav.Link as={Link} to="/profile">
-                Profile
-              </Nav.Link>
-              <Nav.Link as={Button} onClick={handleLogout}>
-                LogOut
-              </Nav.Link>
+              <div className="d-flex align-items-center justify-content-around">
+                <Nav.Link as={Link} to="/profile">
+                  Profile
+                </Nav.Link>
+                <Nav.Link as={Button} onClick={handleLogout}>
+                  LogOut
+                </Nav.Link>
               </div>
             )}
           </Nav>

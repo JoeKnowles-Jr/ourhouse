@@ -5,6 +5,7 @@ export const authOptions = {
         GoogleProvider({
             clientId: import.meta.env.GOOGLE_ID,
             clientSecret: import.meta.env.GOOGLE_SECRET,
+            fetchBasicProfile: true
         }),
     ],
     session: {

@@ -28,19 +28,30 @@ const OurCalendar = () => {
       }, {});
 
       const tileClassName = ({ date, view }) => {
+        console.log("view", view)
         const cellDate = formatDate(date)
-        // Check if a date is in the past
-        if (calendarEvents[cellDate]) {
-          return 'past-date';
+        const today = new Date()
+        const dayEvents = calendarEvents[cellDate]
+
+        if (!dayEvents) return ''
+        let users = []
+        dayEvents.map(event => {
+            if (users.indexOf(event.userId) < 0) {
+                users.push(event.userId)
+            }
+        })
+        const len = users.length
+
+        if (dayEvents) {
+          return 'day-with-event';
         }
-        // Check if a date is today
-        if (date === new Date()) {
+        if (date === today) {
           return 'today';
         }
         // Check if a date is in the future
-        if (date > new Date()) {
-          return 'future-date';
-        }
+        // if (date > today) {
+        //   return 'future-date';
+        // }
       };
 
     useEffect(() => {
