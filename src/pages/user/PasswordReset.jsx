@@ -24,11 +24,22 @@ c    } catch (e) {
   };
 
   return (
-    <>
-      <Card>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center"
+    }}>
+      <Card style={{
+        width: "40%",
+        margin: "5rem auto",
+        borderRadius: "5rem"
+      }}>
         <Card.Body>
           <h2 className="text-center mb-4">Reset Password</h2>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{
+            width: "50%",
+            margin: "0 auto"
+          }}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
@@ -39,17 +50,17 @@ c    } catch (e) {
               </Alert>
             )}
             <div className="text-center mt-2">
-              <Button disabled={loading} type="submit" className="w-50">
+              <Button disabled={loading} type="submit" className="w-100 mt-4">
                 Send Reset Link
               </Button>
             </div>
           </Form>
         </Card.Body>
         <div className="w-100 text-center mt-2">
-          Back to Login? <Link to={"/login"}>Login</Link>
+          Return to login <Link to={"/login"}>here</Link>
         </div>
       </Card>
-    </>
+    </div>
   );
 };
 

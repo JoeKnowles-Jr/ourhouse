@@ -66,10 +66,10 @@ const Login = () => {
               Forgot Password? <Link to={"/passwordreset"}>Click Here</Link>
             </div>
             <div className="d-flex flex-column text-center mt-2">
-              <Button disabled={loading} type="submit" className="w-75" style={{ margin: "1rem auto" }}>
+              <Button disabled={loading} type="submit" className="w-100" style={{ margin: "1rem auto" }}>
                 Login
               </Button>
-              <Button disabled={loading} type="button" onClick={loginWithGoogle} className="w-100 btn-secondary" style={{ margin: "2rem auto" }}>
+              <Button disabled={loading} type="button" onClick={loginWithGoogle} className="w-100 btn-secondary" style={{ margin: "1rem auto" }}>
                 <img style={{
                   marginRight: "1rem"
                 }} width="24" src={logo} />

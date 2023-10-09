@@ -12,7 +12,7 @@ const ProfileForm = () => {
     const [errorMsg, setErrorMsg] = useState("");
     const [loading, setLoading] = useState(false);
     const [showColorPickerModal, setShowColorPickerModal] = useState(false);
-    const navigate = useNavigate();
+    const [color, setColor] = useState()
 
     useEffect(() => {
         setFirstName(user.firstName)
@@ -21,7 +21,6 @@ const ProfileForm = () => {
     }, [])
 
     const handleCloseColorPickerModal = () => {
-        console.log(handleClose)
         setShowColorPickerModal(false)
     }
 
@@ -54,8 +53,18 @@ const ProfileForm = () => {
                 marginTop: "1rem",
                 borderRadius: "5rem"
             }}>
-                <Card.Body className="d-flex m-4 p-4">
-                    <h2 className="text-center mb-4">Profile</h2>
+                <h2 className="text-center mb-4">Profile</h2>
+                <Card.Body className="d-flex justify-content-between m-4 p-4">
+                <div>
+                    <p>Event Color</p>
+                    <div style={{
+                        backgroundColor: `${user.eventColor}`,
+                        width: "100px",
+                        height: "50px",
+                        border: "1px solid black",
+                        cursor: "pointer"
+                        }}></div>
+                </div>
                     <Form onSubmit={handleSubmit} style={{
                         width: "50%",
                         margin: "0 auto"
@@ -87,16 +96,14 @@ const ProfileForm = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </Form.Group>
-                        <Form.Group id="password" style={{
-                            textAlign: "center",
-                            marginTop: "1rem"
-                        }}>
-                            <Button
-                                style={{
-                                    width: "50%"
-                                }}
-                                className="btn-secondary">Change password</Button>
-                        </Form.Group>
+                        <Button
+                            style={{
+                                width: "100%",
+                                marginTop: "1rem"
+                            }}
+                            className="btn-secondary">
+                            Change password
+                        </Button>
                         <Button style={{
                             width: "100%",
                             marginTop: "1rem"
@@ -111,9 +118,11 @@ const ProfileForm = () => {
                         )}
                     </Form>
 
-                    <ColorPickerModal 
-                    show={showColorPickerModal} 
-                    handleClose={handleCloseColorPickerModal}
+                    <ColorPickerModal
+                        show={showColorPickerModal}
+                        handleClose={handleCloseColorPickerModal}
+                        color={color}
+                        setColor={setColor}
                     />
                 </Card.Body>
             </Card>

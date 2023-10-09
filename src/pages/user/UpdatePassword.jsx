@@ -35,11 +35,22 @@ const UpdatePassword = () => {
   };
 
   return (
-    <>
-      <Card>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center"
+    }}>
+            <Card style={{
+        width: "40%",
+        margin: "5rem auto",
+        borderRadius: "5rem"
+      }}>
         <Card.Body>
           <h2 className="text-center mb-4">Update Password</h2>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{
+            width: "50%",
+            margin: "0 auto"
+          }}>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
@@ -64,7 +75,7 @@ const UpdatePassword = () => {
           </Form>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 };
 

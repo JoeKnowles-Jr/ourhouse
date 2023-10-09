@@ -56,7 +56,7 @@ const Register = () => {
     const isGood = !regex2.test(password)
     console.log(isGood)
     return isGood;
-}
+  }
 
   const handlePwChange = (e) => {
     const pw = e.target.value
@@ -88,9 +88,9 @@ const Register = () => {
   }
 
   return (
-    <div style={{ 
-      display: "flex", 
-      flexDirection: "column", 
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
       justifyContent: "center"
     }}>
       <Card style={{
@@ -129,17 +129,17 @@ const Register = () => {
                 {msg}
               </Alert>
             )}
-            <div className="text-center mt-2">
+            <div className="text-center mt-4">
               <Button disabled={loading} type="submit" className="w-50">
                 Register
               </Button>
             </div>
           </Form>
+          <div className="w-100 text-center mt-4">
+            Already a User? <Link to={"/login"}>Login here</Link>
+          </div>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Already a User? <Link to={"/login"}>Login here</Link>
-      </div>
     </div>
   );
 };
