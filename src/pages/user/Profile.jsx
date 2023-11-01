@@ -5,9 +5,9 @@ import ProfileForm from "../../components/user/ProfileForm"
 
 const Profile = () => {
   const { user } = useAuth();
-  const { 
-    profiles, 
-    addProfile, 
+  const {
+    profiles,
+    addProfile,
     editProfile,
     deleteProfile,
     msg, setMsg

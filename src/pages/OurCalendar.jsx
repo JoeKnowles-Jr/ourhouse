@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthProvider";
 import { Button, Table } from "react-bootstrap";
 import Calendar from "react-calendar";
 import "../Calendar.scss"
-import { useEvents } from "../context/EventProvider";
+import { useEvents, useUsers } from "../context/EventProvider";
 import DayDetail from "../components/event/DayDetail";
 import EventModal from "../components/event/EventModal";
 import ConfirmDeleteEventModal from "../components/event/ConfirmDeleteEventModal"
@@ -11,6 +11,7 @@ import ConfirmDeleteEventModal from "../components/event/ConfirmDeleteEventModal
 const OurCalendar = () => {
     const { user } = useAuth();
     const { events } = useEvents();
+    const { users } = useUsers()
     const [showEventModal, setShowEventModal] = useState(false);
     const [showAllEvents, setShowAllEvents] = useState(false);
     const [currentDate, onChange] = useState(new Date());
@@ -28,31 +29,36 @@ const OurCalendar = () => {
     }, {});
 
     const tileClassName = ({ date, view }) => {
-        console.log("view", view)
         const cellDate = formatDate(date)
-        const today = new Date()
         const dayEvents = calendarEvents[cellDate]
-
-        if (!dayEvents) return ''
-        let users = []
-        dayEvents.map(event => {
-            if (users.indexOf(event.userId) < 0) {
-                users.push(event.userId)
-            }
-        })
-        const len = users.length
-
+        let colors = new Set()
         if (dayEvents) {
-            return 'day-with-event';
+            for (var i = 0; i < dayEvents.length; ++i) {
+                const devent = dayEvents[i]
+                const userColor = findUserColorByUserId(devent.userId)
+
+                // colors.add(userColor)
+                // document.body.appendChild(Object.assign(document.createElement("style"), { textContent: `.{${devent.id}} {background-color: ${userColor ?? "#00f"}}` }))
+                // return devent.id;
+            }
+
+
         }
-        if (date === today) {
+        // Check if a date is today
+        if (date === new Date()) {
             return 'today';
         }
         // Check if a date is in the future
-        // if (date > today) {
-        //   return 'future-date';
-        // }
+        if (date > new Date()) {
+            return 'future-date';
+        }
     };
+
+    const findUserColorByUserId = (uid) => {
+        if (!users) return
+        const user = users.filter(u => u.id === uid)
+        return user.eventColor
+    }
 
     useEffect(() => {
         const newDate = formatDate(currentDate)

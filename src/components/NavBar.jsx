@@ -18,13 +18,15 @@ const NavBar = () => {
     }
   };
 
+  console.log("user", user)
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>OurHouse 1.1</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav></Nav>
+          <Nav></Nav>
           <Nav className="me-auto">
             {!auth && (
               <Nav.Link as={Link} to="/login">
@@ -57,7 +59,12 @@ const NavBar = () => {
             {auth && (
               <div className="d-flex align-items-center justify-content-around">
                 <Nav.Link as={Link} to="/profile">
-                  Profile
+                  {user.user_metadata.avatar_url && <img src={user.user_metadata.avatar_url} title="Profile" style={{
+                    width: "48px",
+                    borderRadius: "50%",
+                    marginRight: "2rem"
+                  }} />}
+                  {!user.user_metadata.avatar_url && <span style={{ backgroundColor: "#777", padding: ".75rem", border: "1px solid white", borderRadius: "1rem" }}>Profile</span>}
                 </Nav.Link>
                 <Nav.Link as={Button} onClick={handleLogout}>
                   LogOut

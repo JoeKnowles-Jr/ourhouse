@@ -33,15 +33,19 @@
     .react-calendar__month-view__days__day {
         font-size: 18px;
     }
+
     .day-with-event {
         background-color: cadetblue;
     }
+
     .future-date {
-        background-color: burlywood;
+        background-color: rgb(165, 235, 124);
     }
+
     .today {
         background-color: cadetblue;
     }
+
     .past-date {
         background-color: orange;
     }

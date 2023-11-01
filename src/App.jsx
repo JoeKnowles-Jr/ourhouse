@@ -13,7 +13,7 @@ import Profile from "./pages/user/Profile";
 import TodosProvider from "./context/TodoProvider";
 import ShoppingListProvider from "./context/ShoppingListProvider";
 import ShoppingListItemProvider from "./context/ShoppingListItemsProvider";
-import OurCalendar from "./pages/Calendar";
+import OurCalendar from "./pages/OurCalendar";
 import EventProvider from "./context/EventProvider";
 import ProfileProvider from "./context/ProfileProvider";
 

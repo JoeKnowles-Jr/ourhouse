@@ -2,11 +2,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 
 const EventContext = createContext({});
+const UserContext = createContext({})
 
 export const useEvents = () => useContext(EventContext);
+export const useUsers = () => useContext(UserContext)
 
 const EventProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
+  const [users, setUsers] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [msg, setMsg] = useState("");
 
@@ -61,20 +64,30 @@ const EventProvider = ({ children }) => {
     }
   };
 
-  const fetchAll = async () => {
+  const fetchAllEvents = async () => {
     const { data, error } = await supabase.from("events").select();
     if (data) setEvents(data);
-    if (error) setErrorMsg("Error in Fetching Events");
+    if (error) setErrorMsg("Error in fetching events!");
+
+  };
+
+  const fetchAllUsers = async () => {
+    const { data, error } = await supabase.from("users").select();
+    if (data) setUsers(data);
+    if (error) setErrorMsg("Error in fetching users!");
+
   };
 
   useEffect(() => {
-    fetchAll();
+    fetchAllEvents();
+    fetchAllUsers()
   }, []);
 
   return (
     <EventContext.Provider
       value={{
         events,
+        users,
         addEvent,
         msg,
         setMsg,

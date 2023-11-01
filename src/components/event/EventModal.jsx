@@ -92,14 +92,14 @@ const EventModal = ({ show, handleClose, type, event, userId, date }) => {
                 <Form.Control
                   type="currency"
                   ref={amountRef}
-                  defaultValue={(event?.amount) ?? ""}
+                  defaultValue={event?.amount ?? ""}
                   required
                 />
               </Form.Group>
               <Form.Group id="recurring">
                 <Form.Label>Recurring</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="radio"
                   // ref={}
                   // defaultValue={(event?.amount) ?? ""}
                   required
