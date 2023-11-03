@@ -33,6 +33,7 @@ const OurCalendar = () => {
         const dayEvents = calendarEvents[cellDate]
         let colors = new Set()
         if (dayEvents) {
+            return 'day-with-event'
             for (var i = 0; i < dayEvents.length; ++i) {
                 const devent = dayEvents[i]
                 const userColor = findUserColorByUserId(devent.userId)
